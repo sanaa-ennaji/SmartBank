@@ -9,25 +9,24 @@ This is a Java EE application developed for **SmartBank**, allowing clients to s
 - **Request Management**: View and filter submitted credit requests by date and status.
 - **Request Status**: The status of a request can be updated, and all modifications are logged with timestamps.
 - **View History**: The history of status changes for each request is available in the detailed view.
-
 ## Technologies Used
 - **JEE Technologies**:
-    - **Servlets**: Used for handling HTTP requests.
-    - **JSP/JSTL**: For rendering the user interface.
-    - **JPA**: For ORM (Object-Relational Mapping).
-    - **Hibernate**: Implementation of JPA to interact with the database.
+  - **Servlets**: Used for handling HTTP requests.
+  - **JSP/JSTL**: For rendering the user interface.
+  - **JPA**: For ORM (Object-Relational Mapping).
+  - **Hibernate**: Implementation of JPA to interact with the database.
 
 - **Testing Frameworks**:
-    - **JUnit**: Unit testing of the business logic.
-    - **Mockito**: For mocking dependencies in the unit tests.
+  - **JUnit**: Unit testing of the business logic.
+  - **Mockito**: For mocking dependencies in the unit tests.
 
 - **Build & Deployment**:
-    - **Maven**: Dependency management and project build.
-    - **Tomcat**: Servlet container for deploying the application.
+  - **Maven**: Dependency management and project build.
+  - **Tomcat**: Servlet container for deploying the application.
 
 - **Backend**:
-    - **EntityManagerFactory Singleton**: Ensures a single instance of the `EntityManagerFactory` is used throughout the application.
-    - **Dependency Injection**: Manually handled via constructors without any framework.
+  - **EntityManagerFactory Singleton**: Ensures a single instance of the `EntityManagerFactory` is used throughout the application.
+  - **Dependency Injection**: Manually handled via constructors without any framework.
 
 ## Installation
 
@@ -35,6 +34,28 @@ This is a Java EE application developed for **SmartBank**, allowing clients to s
 - **JDK 11+**
 - **Apache Maven**
 - **Apache Tomcatg**
+
+## Project Structure
+
+```bash
+src/
+├── main/
+│   ├── java/
+│   │   └── com/smartbank/creditsimulation/
+│   │       ├── controllers/   # Servlets for handling HTTP requests
+│   │       ├── models/        # JPA Entities representing the business model
+│   │       ├── services/      # Business logic and credit calculation logic
+│   │       ├── dao/           # Data Access Objects (DAOs) for persistence logic
+│   │       └── utils/         # Singleton for EntityManagerFactory and utility classes
+│   └── webapp/
+│       ├── WEB-INF/           # JSP files and web.xml for configuration
+│       └── static/            # Static assets like CSS, JavaScript
+└── test/
+    └── java/
+        └── com/smartbank/creditsimulation/
+            ├── services/      # Unit tests for service layer
+            ├── dao/           # Unit tests for DAO layer
+            └── utils/         # Utility class tests (e.g., EntityManagerFactory)
 
 
 
