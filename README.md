@@ -41,21 +41,17 @@ This is a Java EE application developed for **SmartBank**, allowing clients to s
 src/
 ├── main/
 │   ├── java/
-│   │   └── com/smartbank/creditsimulation/
-│   │       ├── controllers/   # Servlets for handling HTTP requests
-│   │       ├── models/        # JPA Entities representing the business model
-│   │       ├── services/      # Business logic and credit calculation logic
+│   │   └── com/example/smartbank/
+│   │       ├── Web/   # Servlets for handling HTTP requests
+│   │       ├── Entity/        # JPA Entities representing the models
+│   │       ├── service/      # Business logic and credit calculation logic
 │   │       ├── dao/           # Data Access Objects (DAOs) for persistence logic
-│   │       └── utils/         # Singleton for EntityManagerFactory and utility classes
+│   │       └── jpa/         # Singleton for EntityManagerFactory 
 │   └── webapp/
-│       ├── WEB-INF/           # JSP files and web.xml for configuration
-│       └── static/            # Static assets like CSS, JavaScript
+│       ├── WEB-INF/           # JSP files
+│       └── public/            # css /javascript
 └── test/
-    └── java/
-        └── com/smartbank/creditsimulation/
-            ├── services/      # Unit tests for service layer
-            ├── dao/           # Unit tests for DAO layer
-            └── utils/         # Utility class tests (e.g., EntityManagerFactory)
+   
 
 
 
