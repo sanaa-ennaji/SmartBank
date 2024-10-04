@@ -2,8 +2,8 @@ package com.example.smartbank.DAO;
 
 import com.example.smartbank.Entity.DemandeCredit;
 import com.example.smartbank.jpa.EntityManagerHelper;
-import jakarta.persistence.Entity;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 
 
@@ -11,36 +11,40 @@ import java.util.List;
 
 public class DemandeCreditDAOImpl implements DemandeCreditDAO {
 
+    private EntityManagerFactory entityManagerFactory;
+
+
+    public DemandeCreditDAOImpl(EntityManagerFactory entityManagerFactory) {
+        this.entityManagerFactory = entityManagerFactory;
+    }
 
     @Override
     public DemandeCredit create(DemandeCredit demande) {
-        EntityManager em = EntityManagerHelper.getEntityManager();
+        EntityManager em = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = null;
-        try{
+        try {
             transaction = em.getTransaction();
             transaction.begin();
             em.persist(demande);
             transaction.commit();
-
-        }catch(Exception  e){
-            if(transaction != null){
+        } catch (Exception e) {
+            if (transaction != null) {
                 transaction.rollback();
             }
             e.printStackTrace();
-
-        }finally {
+        } finally {
             em.close();
         }
-        return null;
+        return demande;
     }
 
     @Override
     public List<DemandeCredit> getAll() {
-        EntityManager em = EntityManagerHelper.getEntityManager();
-        List<DemandeCredit> demandes = null ;
-        try{
-            demandes = em.createQuery("SELECT d From DemandeCredit d", DemandeCredit.class).getResultList();
-        }finally {
+        EntityManager em = entityManagerFactory.createEntityManager();
+        List<DemandeCredit> demandes = null;
+        try {
+            demandes = em.createQuery("SELECT d FROM DemandeCredit d", DemandeCredit.class).getResultList();
+        } finally {
             em.close();
         }
         return demandes;
@@ -48,8 +52,8 @@ public class DemandeCreditDAOImpl implements DemandeCreditDAO {
 
     @Override
     public DemandeCredit findById(long id) {
-        EntityManager em = EntityManagerHelper.getEntityManager();
-        DemandeCredit demande = null ;
+        EntityManager em = entityManagerFactory.createEntityManager();
+        DemandeCredit demande = null;
         try {
             demande = em.find(DemandeCredit.class, id);
         } finally {
@@ -60,8 +64,8 @@ public class DemandeCreditDAOImpl implements DemandeCreditDAO {
 
     @Override
     public void update(DemandeCredit demande) {
-        EntityManager em = EntityManagerHelper.getEntityManager();
-        EntityTransaction transaction = null ;
+        EntityManager em = entityManagerFactory.createEntityManager();
+        EntityTransaction transaction = null;
         try {
             transaction = em.getTransaction();
             transaction.begin();
@@ -75,11 +79,29 @@ public class DemandeCreditDAOImpl implements DemandeCreditDAO {
         } finally {
             em.close();
         }
-
     }
 
     @Override
     public void delete(long id) {
-
+        EntityManager em = entityManagerFactory.createEntityManager();
+        EntityTransaction transaction = null;
+        try {
+            transaction = em.getTransaction();
+            transaction.begin();
+            DemandeCredit demande = em.find(DemandeCredit.class, id);
+            if (demande != null) {
+                em.remove(demande);
+            }
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            em.close();
+        }
     }
+
+
 }

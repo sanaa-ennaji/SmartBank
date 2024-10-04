@@ -9,7 +9,7 @@ import java.util.List;
 
 public class DemandeCreditServiceImpl implements DemandeCreditService {
 
-    private DemandeCreditDAO demandeCreditDAOImpl;
+    private final DemandeCreditDAO demandeCreditDAOImpl;
 
     public DemandeCreditServiceImpl (DemandeCreditDAO demandeCreditDAOImpl){
         this.demandeCreditDAOImpl = demandeCreditDAOImpl;
