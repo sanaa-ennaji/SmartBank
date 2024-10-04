@@ -4,6 +4,8 @@ package com.example.smartbank.Entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "demande_credit")
@@ -28,6 +30,9 @@ public class DemandeCredit {
 
     @Column
     private String remarques;
+
+    @OneToMany(mappedBy = "demandeCredit", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<HistoriqueModification> historiques = new ArrayList<>();
 
 
     public void setId(Long id) {
