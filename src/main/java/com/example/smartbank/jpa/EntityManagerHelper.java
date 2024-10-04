@@ -5,29 +5,25 @@ import jakarta.persistence.Persistence;
 import jakarta.persistence.PersistenceException;
 
 public class EntityManagerHelper {
-    private static EntityManagerFactory emf;
-
     private EntityManagerHelper() {}
-
+    private static EntityManagerFactory entityManagerFactory;
 
     static {
         try {
-            emf = Persistence.createEntityManagerFactory("SmartBankPU");
+            entityManagerFactory = Persistence.createEntityManagerFactory("SmartBankPU");
         } catch (PersistenceException e) {
             e.printStackTrace();
             throw new ExceptionInInitializerError("EntityManagerFactory initialization failed.");
         }
     }
 
-
     public static EntityManagerFactory getEntityManagerFactory() {
-        return emf;
+        return entityManagerFactory;
     }
 
-
     public static void close() {
-        if (emf != null && emf.isOpen()) {
-            emf.close();
+        if (entityManagerFactory != null && entityManagerFactory.isOpen()) {
+            entityManagerFactory.close();
         }
     }
 

@@ -13,9 +13,8 @@ public class DemandeCreditDAOImpl implements DemandeCreditDAO {
 
     private EntityManagerFactory entityManagerFactory;
 
-
-    public DemandeCreditDAOImpl(EntityManagerFactory entityManagerFactory) {
-        this.entityManagerFactory = entityManagerFactory;
+    public DemandeCreditDAOImpl() {
+        this.entityManagerFactory = EntityManagerHelper.getEntityManagerFactory();
     }
 
     @Override
@@ -102,6 +101,4 @@ public class DemandeCreditDAOImpl implements DemandeCreditDAO {
             em.close();
         }
     }
-
-
 }

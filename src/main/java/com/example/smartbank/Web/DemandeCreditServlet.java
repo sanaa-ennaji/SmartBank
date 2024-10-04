@@ -20,13 +20,13 @@ public class DemandeCreditServlet extends HttpServlet {
     private DemandeCreditService demandeCreditService;
     private DemandeCreditDAO  demandeCreditDAOImpl ;
 
-    @Override
+
     public void init() throws ServletException {
 
         this.demandeCreditService = new DemandeCreditServiceImpl(demandeCreditDAOImpl);
     }
 
-    @Override
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -35,7 +35,7 @@ public class DemandeCreditServlet extends HttpServlet {
         request.getRequestDispatcher("/demandeList.jsp").forward(request, response);
     }
 
-    @Override
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
