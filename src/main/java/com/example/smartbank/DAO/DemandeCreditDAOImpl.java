@@ -59,7 +59,7 @@ public class DemandeCreditDAOImpl implements DemandeCreditDAO {
     }
 
     @Override
-    public void updateStatus(DemandeCredit demande) {
+    public void update(DemandeCredit demande) {
         EntityManager em = EntityManagerHelper.getEntityManager();
         EntityTransaction transaction = null ;
         try {

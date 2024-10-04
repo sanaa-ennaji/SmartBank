@@ -9,7 +9,7 @@ public interface DemandeCreditDAO {
     DemandeCredit  create(DemandeCredit demande);
     List<DemandeCredit> getAll();
     DemandeCredit findById (long id);
-    void updateStatus(DemandeCredit demande);
+    void update(DemandeCredit demande);
     void delete (long id);
 
 
