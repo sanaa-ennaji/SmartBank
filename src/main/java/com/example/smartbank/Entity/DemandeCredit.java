@@ -20,7 +20,7 @@ public class DemandeCredit {
     @Column(nullable = false)
     private int duree;
 
-    @Temporal(TemporalType.DATE)
+    @Column(nullable = false)
     private LocalDate dateDemande;
 
     @Column(nullable = false)

@@ -15,10 +15,15 @@
      <property name="javax.persistence.jdbc.password" value="password"/>
      <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
 
-     <property name="hibernate.dialect" value="org.hibernate.dialect.PostgresPlusDialect"/>
+     <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
      <property name="hibernate.show.sql" value="true"/>
      <property name="hibernate.format_sql" value="true"/>
-     <property name="hibernate.hbm2ddl.auto" value="create"/>
+     <property name="hibernate.hbm2ddl.auto" value="update"/>
+
+     <property name="hibernate.use_sql_comments" value="true" />
+     <property name="hibernate.generate_statistics" value="true" />
+     <property name="org.hibernate.SQL" value="DEBUG" />
+     <property name="org.hibernate.type" value="TRACE" />
 
      <property name="hibernate.c3p0.min_size" value="5"/>
      <property name="hibernate.c3p0.max_size" value="30"/>
