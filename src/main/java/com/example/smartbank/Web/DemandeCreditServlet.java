@@ -17,13 +17,13 @@ import java.util.List;
 @WebServlet("/demande")
 public class DemandeCreditServlet extends HttpServlet {
 
-    private DemandeCreditService demandeCreditService;
-    private DemandeCreditDAO  demandeCreditDAOImpl ;
+    private DemandeCreditService demandeCreditService  = null                                  ;
+
 
 
     public void init() throws ServletException {
 
-        this.demandeCreditService = new DemandeCreditServiceImpl(demandeCreditDAOImpl);
+        this.demandeCreditService = new DemandeCreditServiceImpl();
     }
 
 

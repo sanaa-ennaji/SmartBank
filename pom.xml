@@ -51,6 +51,12 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        <!-- Dependency Injection (JSR 330) -->
+        <dependency>
+            <groupId>jakarta.inject</groupId>
+            <artifactId>jakarta.inject-api</artifactId>
+            <version>2.0.1</version>
+        </dependency>
     </dependencies>
 
     <build>
