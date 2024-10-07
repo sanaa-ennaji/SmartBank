@@ -12,7 +12,7 @@
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Demande de Crédit</title>
-     <link rel="stylesheet" href="styles.css"> <!-- Optional: link to your CSS -->
+     <link rel="stylesheet" href="styles.css">
  </head>
  <body>
  <h1>Liste des Demandes de Crédit</h1>

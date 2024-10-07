@@ -26,7 +26,7 @@ public class DemandeCreditServlet extends HttpServlet {
             throws ServletException, IOException {
         List<DemandeCredit> demandes = demandeCreditService.getAll();
         request.setAttribute("demandes", demandes);
-        request.getRequestDispatcher("/demandeList.jsp").forward(request, response);
+        request.getRequestDispatcher("/creditClient.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

@@ -16,6 +16,15 @@ public class DemandeCredit {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(nullable = false )
+    private String projet ;
+
+    @Column(nullable = false)
+    private String  job ;
+
+    @Column(nullable = false)
+    private LocalDate dateDemande;
+
     @Column(nullable = false)
     private double montant;
 
@@ -23,13 +32,40 @@ public class DemandeCredit {
     private int duree;
 
     @Column(nullable = false)
-    private LocalDate dateDemande;
+    private double mensualites ;
 
     @Column(nullable = false)
-    private String etat;
+    private String email ;
 
-    @Column
-    private String remarques;
+    @Column( nullable = false)
+    private String phone ;
+
+    @Column( nullable = false)
+    private String nom ;
+
+    @Column( nullable = false)
+    private String prenom ;
+
+    @Column( nullable = false)
+    private String CIN ;
+
+    @Column( nullable = false)
+    private LocalDate dateNaissance ;
+
+    @Column( nullable = false)
+    private LocalDate dateDebut ;
+
+    @Column( nullable = false)
+    private Double Total ;
+
+    @Column( nullable = false)
+    private boolean  credit ;
+
+     // @Column(nullable = false)
+     //  private String etat;
+
+   //  @Column
+   // private String remarques;
 
     @OneToMany(mappedBy = "demandeCredit", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<HistoriqueModification> historiques = new ArrayList<>();
@@ -68,20 +104,111 @@ public class DemandeCredit {
         return dateDemande;
     }
 
-    public String getEtat() {
-        return etat;
+    public String getProjet() {
+        return projet;
     }
 
-    public void setEtat(String etat) {
-        this.etat = etat;
+    public void setProjet(String projet) {
+        this.projet = projet;
     }
 
-    public void setRemarques(String Remarques) {
-        this.remarques = remarques;
+    public String getJob() {
+        return job;
     }
 
-    public String getRemarques() {
-        return remarques;
+    public void setJob(String job) {
+        this.job = job;
     }
 
+    public double getMontant() {
+        return montant;
+    }
+
+    public double getMensualites() {
+        return mensualites;
+    }
+
+    public void setMensualites(double mensualites) {
+        this.mensualites = mensualites;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public String getCIN() {
+        return CIN;
+    }
+
+    public void setCIN(String CIN) {
+        this.CIN = CIN;
+    }
+
+    public LocalDate getDateNaissance() {
+        return dateNaissance;
+    }
+
+    public void setDateNaissance(LocalDate dateNaissance) {
+        this.dateNaissance = dateNaissance;
+    }
+
+    public LocalDate getDateDebut() {
+        return dateDebut;
+    }
+
+    public void setDateDebut(LocalDate dateDebut) {
+        this.dateDebut = dateDebut;
+    }
+
+    public Double getTotal() {
+        return Total;
+    }
+
+    public void setTotal(Double total) {
+        Total = total;
+    }
+
+    public boolean isCredit() {
+        return credit;
+    }
+
+    public void setCredit(boolean credit) {
+        this.credit = credit;
+    }
+
+    public List<HistoriqueModification> getHistoriques() {
+        return historiques;
+    }
+
+    public void setHistoriques(List<HistoriqueModification> historiques) {
+        this.historiques = historiques;
+    }
 }
