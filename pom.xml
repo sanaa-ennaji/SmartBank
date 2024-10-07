@@ -51,7 +51,14 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
-        <!-- Dependency Injection (JSR 330) -->
+
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.6.0</version> <!-- or latest stable version -->
+        </dependency>
+
+
         <dependency>
             <groupId>jakarta.inject</groupId>
             <artifactId>jakarta.inject-api</artifactId>
