@@ -16,12 +16,21 @@ public class DemandeCreditServiceImpl implements DemandeCreditService {
     }
 
     @Override
-    public DemandeCredit create(double montant, int duree, String etat, String remarques) {
+    public DemandeCredit create(double montant, int duree, String projet, double mensualites , String email , String nom , String prenom , String phone , String CIN ,LocalDate dateNaissance, LocalDate dateDebute , Double total , boolean credit ) {
         DemandeCredit demande = new DemandeCredit();
         demande.setMontant(montant);
         demande.setDuree(duree);
-        demande.setEtat(etat);
-        demande.setRemarques(remarques);
+        demande.setProjet(projet);
+       demande.setMensualites(mensualites);
+       demande.setEmail(email);
+       demande.setNom(nom);
+       demande.setPrenom(prenom);
+       demande.setCIN(CIN);
+        demande.setDateDebut(dateNaissance);
+       demande.setDateDebut(dateDebute);
+       demande.setTotal(total);
+       demande.setCredit(credit);
+
         demande.setDateDemande(LocalDate.now());
         demandeCreditDAOImpl.create(demande);
 

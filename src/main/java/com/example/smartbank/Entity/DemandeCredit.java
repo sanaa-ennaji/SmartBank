@@ -56,7 +56,7 @@ public class DemandeCredit {
     private LocalDate dateDebut ;
 
     @Column( nullable = false)
-    private Double Total ;
+    private Double total;
 
     @Column( nullable = false)
     private boolean  credit ;
@@ -189,11 +189,11 @@ public class DemandeCredit {
     }
 
     public Double getTotal() {
-        return Total;
+        return total;
     }
 
     public void setTotal(Double total) {
-        Total = total;
+        total = total;
     }
 
     public boolean isCredit() {

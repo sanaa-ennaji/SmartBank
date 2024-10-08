@@ -33,10 +33,9 @@ public class DemandeCreditServlet extends HttpServlet {
             throws ServletException, IOException {
         double montant = Double.parseDouble(request.getParameter("montant"));
         int duree = Integer.parseInt(request.getParameter("duree"));
-        String etat = request.getParameter("etat");
-        String remarques = request.getParameter("remarques");
 
-        demandeCreditService.create(montant, duree, etat, remarques);
+      //  demandeCreditService.create( montant, duree,projet ,   mensualites ,email ,nom ,prenom ,phone ,CIN ,
+       // dateDebute , dateNaissance , total ,credit ) ;
         response.sendRedirect("demande");
     }
 }

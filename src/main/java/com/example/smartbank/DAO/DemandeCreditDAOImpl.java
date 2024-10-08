@@ -11,7 +11,7 @@ import java.util.List;
 
 public class DemandeCreditDAOImpl implements DemandeCreditDAO {
 
-    private EntityManagerFactory entityManagerFactory;
+    private final EntityManagerFactory entityManagerFactory;
 
     public DemandeCreditDAOImpl() {
         this.entityManagerFactory = EntityManagerHelper.getEntityManagerFactory();
@@ -40,7 +40,8 @@ public class DemandeCreditDAOImpl implements DemandeCreditDAO {
     @Override
     public List<DemandeCredit> getAll() {
         EntityManager em = entityManagerFactory.createEntityManager();
-        List<DemandeCredit> demandes = null;
+      //  List<DemandeCredit> demandes = null;
+        List<DemandeCredit> demandes ;
         try {
             demandes = em.createQuery("SELECT d FROM DemandeCredit d", DemandeCredit.class).getResultList();
         } finally {
@@ -52,7 +53,8 @@ public class DemandeCreditDAOImpl implements DemandeCreditDAO {
     @Override
     public DemandeCredit findById(long id) {
         EntityManager em = entityManagerFactory.createEntityManager();
-        DemandeCredit demande = null;
+        //DemandeCredit demande = null;
+        DemandeCredit demande ;
         try {
             demande = em.find(DemandeCredit.class, id);
         } finally {
