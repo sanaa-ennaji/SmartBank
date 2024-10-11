@@ -8,6 +8,7 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <class>com.example.smartbank.Entity.DemandeCredit</class>
         <class>com.example.smartbank.Entity.HistoriqueModification</class>
+        <class>com.example.smartbank.Entity.Status</class>
 
  <properties>
 

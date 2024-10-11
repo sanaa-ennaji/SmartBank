@@ -23,9 +23,9 @@ public class HistoriqueModification {
     private LocalDate dateModification;
 
     @Column(nullable = false)
-    private String raison; // Reason for the modification
+    private String raison;
 
-    // Constructors
+
     public HistoriqueModification() {}
 
     public HistoriqueModification(DemandeCredit demandeCredit, Status status, LocalDate dateModification, String raison) {
@@ -35,7 +35,7 @@ public class HistoriqueModification {
         this.raison = raison;
     }
 
-    // Getters and Setters
+
     public Long getId() {
         return id;
     }

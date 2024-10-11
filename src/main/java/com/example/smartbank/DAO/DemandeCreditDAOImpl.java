@@ -1,10 +1,14 @@
 package com.example.smartbank.DAO;
 
 import com.example.smartbank.Entity.DemandeCredit;
+import com.example.smartbank.Entity.HistoriqueModification;
+import com.example.smartbank.Entity.Status;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.enterprise.context.RequestScoped;
+
+import java.time.LocalDate;
 import java.util.List;
 
 @RequestScoped
@@ -19,6 +23,22 @@ public class DemandeCreditDAOImpl implements DemandeCreditDAO {
         try {
             transaction.begin();
             em.persist(demande);
+
+
+            Status initialStatus = em.createQuery("SELECT s FROM Status s WHERE s.name = 'encours'", Status.class)
+                    .setMaxResults(1)
+                    .getSingleResult();
+
+
+            HistoriqueModification historique = new HistoriqueModification();
+            historique.setDemandeCredit(demande);
+            historique.setStatus(initialStatus);
+            historique.setDateModification(LocalDate.now());
+            historique.setRaison("Created");
+
+
+            em.persist(historique);
+
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
