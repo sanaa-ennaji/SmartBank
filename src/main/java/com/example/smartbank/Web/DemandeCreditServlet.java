@@ -2,7 +2,7 @@ package com.example.smartbank.Web;
 
 import com.example.smartbank.Entity.DemandeCredit;
 import com.example.smartbank.Service.DemandeCreditService;
-import com.example.smartbank.Service.DemandeCreditServiceImpl;
+import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -13,16 +13,13 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
-
 @WebServlet("/demande")
 public class DemandeCreditServlet extends HttpServlet {
 
+    @Inject
     private DemandeCreditService demandeCreditService;
 
-    public void init() throws ServletException {
-        this.demandeCreditService = new DemandeCreditServiceImpl();
-    }
-
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         List<DemandeCredit> demandes = demandeCreditService.getAll();
@@ -30,6 +27,7 @@ public class DemandeCreditServlet extends HttpServlet {
         request.getRequestDispatcher("/creditClient.jsp").forward(request, response);
     }
 
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
@@ -46,6 +44,7 @@ public class DemandeCreditServlet extends HttpServlet {
             LocalDate dateNaissance = LocalDate.parse(request.getParameter("dateNaissance"));
             Double total = Double.parseDouble(request.getParameter("total"));
             boolean credit = Boolean.parseBoolean(request.getParameter("credit"));
+
             DemandeCredit demande = new DemandeCredit();
             demande.setMontant(montant);
             demande.setDuree(duree);
@@ -66,11 +65,8 @@ public class DemandeCreditServlet extends HttpServlet {
 
             response.sendRedirect("demande");
         } catch (Exception e) {
-
             e.printStackTrace();
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid input");
         }
     }
-
-
 }
