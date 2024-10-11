@@ -9,35 +9,55 @@ import java.time.LocalDate;
 public class HistoriqueModification {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id ;
+    private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "demande_credit_id", nullable = false)
+    private DemandeCredit demandeCredit;
+
+    @ManyToOne
+    @JoinColumn(name = "status_id", nullable = false)
+    private Status status;
 
     @Column(nullable = false)
     private LocalDate dateModification;
 
     @Column(nullable = false)
-    private String etatPrecedent ;
+    private String raison; // Reason for the modification
 
-    @Column(nullable = false)
-    private String nouvelEtat;
+    // Constructors
+    public HistoriqueModification() {}
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "demande_credit_id" , nullable = false)
-    private DemandeCredit demandeCredit ;
+    public HistoriqueModification(DemandeCredit demandeCredit, Status status, LocalDate dateModification, String raison) {
+        this.demandeCredit = demandeCredit;
+        this.status = status;
+        this.dateModification = dateModification;
+        this.raison = raison;
+    }
 
-    public long getId() {
+    // Getters and Setters
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getEtatPrecedent() {
-        return etatPrecedent;
+    public DemandeCredit getDemandeCredit() {
+        return demandeCredit;
     }
 
-    public void setEtatPrecedent(String etatPrecedent) {
-        this.etatPrecedent = etatPrecedent;
+    public void setDemandeCredit(DemandeCredit demandeCredit) {
+        this.demandeCredit = demandeCredit;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
     public LocalDate getDateModification() {
@@ -48,21 +68,11 @@ public class HistoriqueModification {
         this.dateModification = dateModification;
     }
 
-    public String getNouvelEtat() {
-        return nouvelEtat;
+    public String getRaison() {
+        return raison;
     }
 
-    public void setNouvelEtat(String nouvelEtat) {
-        this.nouvelEtat = nouvelEtat;
+    public void setRaison(String raison) {
+        this.raison = raison;
     }
-
-    public DemandeCredit getDemandeCredit() {
-        return demandeCredit;
-    }
-
-    public void setDemandeCredit(DemandeCredit demandeCredit) {
-
-        this.demandeCredit = demandeCredit;
-    }
-
 }
