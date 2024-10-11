@@ -33,7 +33,6 @@ public class DemandeCreditServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-
             double montant = Double.parseDouble(request.getParameter("montant"));
             int duree = Integer.parseInt(request.getParameter("duree"));
             String projet = request.getParameter("projet");
@@ -43,16 +42,10 @@ public class DemandeCreditServlet extends HttpServlet {
             String prenom = request.getParameter("prenom");
             String phone = request.getParameter("phone");
             String CIN = request.getParameter("CIN");
-
-
             LocalDate dateDebute = LocalDate.parse(request.getParameter("dateDebute"));
             LocalDate dateNaissance = LocalDate.parse(request.getParameter("dateNaissance"));
-
-
             Double total = Double.parseDouble(request.getParameter("total"));
             boolean credit = Boolean.parseBoolean(request.getParameter("credit"));
-
-
             DemandeCredit demande = new DemandeCredit();
             demande.setMontant(montant);
             demande.setDuree(duree);
@@ -69,9 +62,7 @@ public class DemandeCreditServlet extends HttpServlet {
             demande.setCredit(credit);
             demande.setDateDemande(LocalDate.now());
 
-
             demandeCreditService.create(demande);
-
 
             response.sendRedirect("demande");
         } catch (Exception e) {

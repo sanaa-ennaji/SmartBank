@@ -67,8 +67,8 @@ public class DemandeCredit {
    //  @Column
    // private String remarques;
 
-    @OneToMany(mappedBy = "demandeCredit", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<HistoriqueModification> historiques = new ArrayList<>();
+//    @OneToMany(mappedBy = "demandeCredit", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<HistoriqueModification> historiques = new ArrayList<>();
 
 
     public void setId(Long id) {
@@ -204,12 +204,12 @@ public class DemandeCredit {
         this.credit = credit;
     }
 
-    public List<HistoriqueModification> getHistoriques() {
-        return historiques;
-    }
-
-    public void setHistoriques(List<HistoriqueModification> historiques) {
-        this.historiques = historiques;
-    }
+//    public List<HistoriqueModification> getHistoriques() {
+//        return historiques;
+//    }
+//
+//    public void setHistoriques(List<HistoriqueModification> historiques) {
+//        this.historiques = historiques;
+//    }
 
 }

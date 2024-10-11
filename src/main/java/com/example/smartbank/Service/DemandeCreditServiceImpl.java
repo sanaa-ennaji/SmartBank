@@ -1,18 +1,15 @@
 package com.example.smartbank.Service;
 
 import com.example.smartbank.DAO.DemandeCreditDAO;
-import com.example.smartbank.DAO.DemandeCreditDAOImpl;
 import com.example.smartbank.Entity.DemandeCredit;
+import jakarta.inject.Inject;
 
 import java.util.List;
 
 public class DemandeCreditServiceImpl implements DemandeCreditService {
 
+    @Inject
     public DemandeCreditDAO demandeCreditDAOImpl;
-
-    public DemandeCreditServiceImpl() {
-        this.demandeCreditDAOImpl = new DemandeCreditDAOImpl();
-    }
 
     @Override
     public DemandeCredit create(DemandeCredit demande) {
