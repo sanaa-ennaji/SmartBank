@@ -24,7 +24,7 @@ public class DemandeCreditServlet extends HttpServlet {
             throws ServletException, IOException {
         List<DemandeCredit> demandes = demandeCreditService.getAll();
         request.setAttribute("demandes", demandes);
-        request.getRequestDispatcher("/creditClient.jsp").forward(request, response);
+        request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
 
     @Override
@@ -34,10 +34,12 @@ public class DemandeCreditServlet extends HttpServlet {
             double montant = Double.parseDouble(request.getParameter("montant"));
             int duree = Integer.parseInt(request.getParameter("duree"));
             String projet = request.getParameter("projet");
+            String job = request.getParameter("job");
             double mensualites = Double.parseDouble(request.getParameter("mensualites"));
             String email = request.getParameter("email");
             String nom = request.getParameter("nom");
             String prenom = request.getParameter("prenom");
+            String civilite = request.getParameter("civilite");
             String phone = request.getParameter("phone");
             String CIN = request.getParameter("CIN");
             LocalDate dateDebute = LocalDate.parse(request.getParameter("dateDebute"));
@@ -49,10 +51,12 @@ public class DemandeCreditServlet extends HttpServlet {
             demande.setMontant(montant);
             demande.setDuree(duree);
             demande.setProjet(projet);
+            demande.setJob(job);
             demande.setMensualites(mensualites);
             demande.setEmail(email);
             demande.setNom(nom);
             demande.setPrenom(prenom);
+            demande.setCivilite(civilite);
             demande.setPhone(phone);
             demande.setCIN(CIN);
             demande.setDateNaissance(dateNaissance);

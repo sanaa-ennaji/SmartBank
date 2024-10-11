@@ -33,27 +33,27 @@
 
     <div class="forms">
         <!-- Form -->
-        <form data-multi-step class="multi-step-form">
+        <form data-multi-step class="multi-step-form" action="${pageContext.request.contextPath}/demande" method="post">
             <!-- Step 1 -->
             <div class="card" data-step>
                 <div class="form-group margin-x-1">
                     <p class="label">Mon projet</p>
                     <select class="minimal m-t-1" name="projet">
-                        <option>J’ai besoin d’argent</option>
+                        <option value="" >J’ai besoin d’argent</option>
                         <option>Je finance mon véhicule d’occasion</option>
                         <option>Je Gère mes imprévus</option>
                         <option>Je finance mon véhicule neuf</option>
                         <option>J’équipe ma maison</option>
                     </select>
                     <p class="label m-t-5">Je suis</p>
-                    <select class="minimal m-t-1" name="profession">
-                        <option>Salarié du secteur privé</option>
-                        <option>Fonctionnaire</option>
-                        <option>Profession libérale</option>
-                        <option>Commerçant</option>
-                        <option>Artisan</option>
-                        <option>Retraité</option>
-                        <option>Autres professions</option>
+                    <select class="minimal m-t-1" name="job">
+                        <option value="Salarié du secteur privé">Salarié du secteur privé</option>
+                        <option value="Fonctionnaire">Fonctionnaire</option>
+                        <option value="Profession libérale">Profession libérale</option>
+                        <option value="Commerçant">Commerçant</option>
+                        <option value="Artisan">Artisan</option>
+                        <option value="Retraité">Retraité</option>
+                        <option value="Autres professions">Autres professions</option>
                     </select>
                 </div>
 
@@ -131,19 +131,19 @@
                     <label for="prenom" class="custom-label">Prénom*</label>
                 </div>
                 <div class="form-group m-t-9 input-container">
-                    <input type="text" name="cin" id="cin" placeholder="" class="custom-input" required>
+                    <input type="text" name="CIN" id="cin" placeholder="" class="custom-input" required>
                     <label for="cin" class="custom-label">Numéro CIN / Carte de séjour*</label>
                 </div>
                 <div class="form-group m-t-9 input-container">
-                    <input type="date" name="date_naissance" id="date_naissance" class="custom-input" required>
+                    <input type="date" name="dateNaissance" id="date_naissance" class="custom-input" required>
                     <label for="date_naissance" class="custom-label">Date de naissance*</label>
                 </div>
                 <div class="form-group m-t-9 input-container">
-                    <input type="date" name="date_embauche" id="date_embauche" class="custom-input" required>
+                    <input type="date" name="dateDebute" id="date_embauche" class="custom-input" required>
                     <label for="date_embauche" class="custom-label">Date d'embauche/début de l'activité*</label>
                 </div>
                 <div class="form-group m-t-9 input-container">
-                    <input type="number" name="revenus" id="revenus" placeholder="" class="custom-input" required>
+                    <input type="number" name="total" id="revenus" placeholder="" class="custom-input" required>
                     <label for="revenus" class="custom-label">Total revenus mensuels (net en DH)*</label>
                 </div>
 
@@ -167,7 +167,7 @@
                     <button type="submit" class="button2 m-t-5">
                         <p class="p-9">Demander ce crédit</p>
                     </button>
-                    <button class="button2 m-t-5" data-previous>
+                    <button class="button2 m-t-5" >
                         <p class="p-9">Voir mon récapitulatif</p>
                     </button>
                 </div>
@@ -181,8 +181,8 @@
 
 <div></div>
 
-<script src="app/js/script.js"></script>
-<script src="app/js/calcule.js"></script>
+<script src="js/script.js"></script>
+<script src="js/calcule.js"></script>
 
 </body>
 

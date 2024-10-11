@@ -41,6 +41,9 @@ public class DemandeCredit {
     private String phone ;
 
     @Column( nullable = false)
+    private String civilite;
+
+    @Column( nullable = false)
     private String nom ;
 
     @Column( nullable = false)
@@ -207,5 +210,11 @@ public class DemandeCredit {
         this.credit = credit;
     }
 
+    public String getCivilite() {
+        return civilite;
+    }
 
+    public void setCivilite(String civilite) {
+        this.civilite = civilite;
+    }
 }
