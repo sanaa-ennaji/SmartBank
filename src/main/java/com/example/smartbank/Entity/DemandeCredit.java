@@ -4,6 +4,7 @@ package com.example.smartbank.Entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Entity
@@ -60,15 +61,18 @@ public class DemandeCredit {
     @Column( nullable = false)
     private boolean  credit ;
 
-     // @Column(nullable = false)
-     //  private String etat;
+    @OneToMany(mappedBy = "demandeCredit", cascade = CascadeType.ALL)
+    private List<HistoriqueModification> historiqueModifications;
 
-   //  @Column
-   // private String remarques;
 
-//    @OneToMany(mappedBy = "demandeCredit", cascade = CascadeType.ALL, orphanRemoval = true)
-//    private List<HistoriqueModification> historiques = new ArrayList<>();
 
+    public List<HistoriqueModification> getHistoriqueModifications() {
+        return historiqueModifications;
+    }
+
+    public void setHistoriqueModifications(List<HistoriqueModification> historiqueModifications) {
+        this.historiqueModifications = historiqueModifications;
+    }
 
     public void setId(Long id) {
         this.id = id;
@@ -203,12 +207,5 @@ public class DemandeCredit {
         this.credit = credit;
     }
 
-//    public List<HistoriqueModification> getHistoriques() {
-//        return historiques;
-//    }
-//
-//    public void setHistoriques(List<HistoriqueModification> historiques) {
-//        this.historiques = historiques;
-//    }
 
 }
