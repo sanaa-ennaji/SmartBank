@@ -211,4 +211,5 @@ public class DemandeCredit {
     public void setHistoriques(List<HistoriqueModification> historiques) {
         this.historiques = historiques;
     }
+
 }

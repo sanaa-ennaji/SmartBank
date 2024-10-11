@@ -61,6 +61,7 @@ public class HistoriqueModification {
     }
 
     public void setDemandeCredit(DemandeCredit demandeCredit) {
+
         this.demandeCredit = demandeCredit;
     }
 
