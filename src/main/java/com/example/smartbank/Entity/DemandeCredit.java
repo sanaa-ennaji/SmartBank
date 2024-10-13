@@ -199,7 +199,7 @@ public class DemandeCredit {
     }
 
     public void setTotal(Double total) {
-        total = total;
+        this.total = total;
     }
 
     public boolean isCredit() {

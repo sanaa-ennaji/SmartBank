@@ -10,10 +10,11 @@ import jakarta.servlet.annotation.*;
 public class HelloServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, ServletException {
 
-        request.getRequestDispatcher("/creditClient.jsp").forward(request, response);
+        request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
 
-    public void destroy() {
-    }
+   public void destroy(){
+
+   }
 
 }

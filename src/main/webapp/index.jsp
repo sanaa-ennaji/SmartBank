@@ -39,11 +39,11 @@
                 <div class="form-group margin-x-1">
                     <p class="label">Mon projet</p>
                     <select class="minimal m-t-1" name="projet">
-                        <option value="" >J’ai besoin d’argent</option>
-                        <option>Je finance mon véhicule d’occasion</option>
-                        <option>Je Gère mes imprévus</option>
-                        <option>Je finance mon véhicule neuf</option>
-                        <option>J’équipe ma maison</option>
+                        <option value="J’ai besoin d’argent" >J’ai besoin d’argent</option>
+                        <option value="Je finance mon véhicule d’occasion">Je finance mon véhicule d’occasion</option>
+                        <option value="Je Gère mes imprévus">Je Gère mes imprévus</option>
+                        <option value="Je finance mon véhicule neuf">Je finance mon véhicule neuf</option>
+                        <option value="J’équipe ma maison">J’équipe ma maison</option>
                     </select>
                     <p class="label m-t-5">Je suis</p>
                     <select class="minimal m-t-1" name="job">
@@ -58,16 +58,19 @@
                 </div>
 
                 <div class="slider-container">
+                    <!-- Montant (en DH) -->
                     <p class="label m-t-5">Montant (en DH)</p>
                     <input class="input1 w-8" type="number" id="sliderValue" step="1" value="5000" name="montant">
                     <input type="range" min="5000" max="600000" step="1000" value="5000" class="slider" id="mySlider" name="montant_slider">
 
+                    <!-- Durée (en mois) -->
                     <p class="label m-t-5">Durée (en mois)</p>
                     <input class="input1 w-5" type="number" id="durationValue" step="1" value="12" name="duree">
                     <input type="range" min="12" max="120" step="6" value="12" class="slider" id="durationSlider" name="duree_slider">
 
+                    <!-- Mensualités (en DH) -->
                     <p class="label m-t-5">Mensualités (en DH)</p>
-                    <input class="input1 w-9" type="number" id="mensualiteValue" value="70" step="0.01" name="mensualite">
+                    <input class="input1 w-9" type="number" id="mensualiteValue" value="70" step="0.01" name="mensualites">
                     <input type="range" min="1" max="80000" step="100" value="70" class="slider" id="mensualiteSlider" name="mensualite_slider">
                 </div>
 

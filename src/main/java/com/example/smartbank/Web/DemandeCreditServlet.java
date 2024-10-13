@@ -2,9 +2,9 @@ package com.example.smartbank.Web;
 
 import com.example.smartbank.Entity.DemandeCredit;
 import com.example.smartbank.Service.DemandeCreditService;
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
-@WebServlet("/demande")
+@ApplicationScoped
 public class DemandeCreditServlet extends HttpServlet {
 
     @Inject
@@ -31,27 +31,48 @@ public class DemandeCreditServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            double montant = Double.parseDouble(request.getParameter("montant"));
-            int duree = Integer.parseInt(request.getParameter("duree"));
-            String projet = request.getParameter("projet");
-            String job = request.getParameter("job");
-            double mensualites = Double.parseDouble(request.getParameter("mensualites"));
+
+            String montantParam = request.getParameter("montant");
+            String dureeParam = request.getParameter("duree");
+            String mensualitesParam = request.getParameter("mensualites");
             String email = request.getParameter("email");
             String nom = request.getParameter("nom");
             String prenom = request.getParameter("prenom");
             String civilite = request.getParameter("civilite");
             String phone = request.getParameter("phone");
             String CIN = request.getParameter("CIN");
-            LocalDate dateDebute = LocalDate.parse(request.getParameter("dateDebute"));
-            LocalDate dateNaissance = LocalDate.parse(request.getParameter("dateNaissance"));
-            Double total = Double.parseDouble(request.getParameter("total"));
-            boolean credit = Boolean.parseBoolean(request.getParameter("credit"));
+            String dateDebuteParam = request.getParameter("dateDebute");
+            String dateNaissanceParam = request.getParameter("dateNaissance");
+            String totalParam = request.getParameter("total");
+            String creditParam = request.getParameter("credit");
+
+
+            if (montantParam == null ) {
+                throw new IllegalArgumentException("Missing required parameters1");
+            }
+
+            if (dureeParam == null ) {
+                throw new IllegalArgumentException("Missing required parameters 2.");
+            }
+
+            if (mensualitesParam == null ) {
+                throw new IllegalArgumentException("Missing required parameters 3.");
+            }
+
+
+            double montant = Double.parseDouble(montantParam.trim());
+            int duree = Integer.parseInt(dureeParam.trim());
+            double mensualites = Double.parseDouble(mensualitesParam.trim());
+            LocalDate dateDebute = LocalDate.parse(dateDebuteParam);
+            LocalDate dateNaissance = LocalDate.parse(dateNaissanceParam);
+            Double total = Double.parseDouble(totalParam.trim());
+            boolean credit = Boolean.parseBoolean(creditParam);
 
             DemandeCredit demande = new DemandeCredit();
             demande.setMontant(montant);
             demande.setDuree(duree);
-            demande.setProjet(projet);
-            demande.setJob(job);
+            demande.setProjet(request.getParameter("projet"));
+            demande.setJob(request.getParameter("job"));
             demande.setMensualites(mensualites);
             demande.setEmail(email);
             demande.setNom(nom);
@@ -65,12 +86,13 @@ public class DemandeCreditServlet extends HttpServlet {
             demande.setCredit(credit);
             demande.setDateDemande(LocalDate.now());
 
-            demandeCreditService.create(demande);
 
+            demandeCreditService.create(demande);
             response.sendRedirect("demande");
         } catch (Exception e) {
             e.printStackTrace();
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid input");
         }
     }
+
 }
