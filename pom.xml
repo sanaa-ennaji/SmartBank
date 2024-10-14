@@ -63,14 +63,11 @@
             <artifactId>jakarta.enterprise.cdi-api</artifactId>
             <version>3.0.0</version>
         </dependency>
-
         <dependency>
-            <groupId>org.jboss.weld.se</groupId>
-            <artifactId>weld-se-core</artifactId>
+            <groupId>org.jboss.weld.servlet</groupId>
+            <artifactId>weld-servlet-core</artifactId>
             <version>4.0.3.Final</version>
         </dependency>
-
-
 
         <dependency>
             <groupId>org.glassfish</groupId>

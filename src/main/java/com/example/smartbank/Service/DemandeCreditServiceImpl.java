@@ -2,14 +2,15 @@ package com.example.smartbank.Service;
 
 import com.example.smartbank.DAO.DemandeCreditDAO;
 import com.example.smartbank.Entity.DemandeCredit;
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
-
 import java.util.List;
 
+@ApplicationScoped
 public class DemandeCreditServiceImpl implements DemandeCreditService {
 
     @Inject
-    public DemandeCreditDAO demandeCreditDAOImpl;
+    private DemandeCreditDAO demandeCreditDAOImpl;
 
     @Override
     public DemandeCredit create(DemandeCredit demande) {
@@ -31,4 +32,6 @@ public class DemandeCreditServiceImpl implements DemandeCreditService {
     public void update(DemandeCredit demande) {
         demandeCreditDAOImpl.update(demande);
     }
+
+
 }

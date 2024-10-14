@@ -2,9 +2,9 @@ package com.example.smartbank.Web;
 
 import com.example.smartbank.Entity.DemandeCredit;
 import com.example.smartbank.Service.DemandeCreditService;
-import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
-@ApplicationScoped
+@WebServlet("/demande")
 public class DemandeCreditServlet extends HttpServlet {
 
     @Inject
