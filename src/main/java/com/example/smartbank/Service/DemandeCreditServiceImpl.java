@@ -4,6 +4,8 @@ import com.example.smartbank.DAO.DemandeCreditDAO;
 import com.example.smartbank.Entity.DemandeCredit;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+
+import java.time.LocalDate;
 import java.util.List;
 
 @ApplicationScoped
@@ -38,5 +40,8 @@ public class DemandeCreditServiceImpl implements DemandeCreditService {
 
         demandeCreditDAOImpl.updateStatus(demande_credit_id , status_id);
     }
-
+    @Override
+    public List<DemandeCredit> getFilteredDemands(long statusId, LocalDate dateDebut) {
+        return demandeCreditDAOImpl.getFilteredDemands(statusId, dateDebut);
+    }
 }
