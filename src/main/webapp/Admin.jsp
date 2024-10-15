@@ -12,6 +12,56 @@
 <head>
     <title>Demande Credit List</title>
     <link rel="stylesheet" href="css/admin.css">
+    <style>
+        body{
+            margin-inline: 8px;
+        }
+        a {
+        background-color: #FDDF35;
+        color: #fff;
+        padding: 6px 12px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #02AFBC;
+    }
+
+
+    .filter-form {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+    }
+
+
+    .filter-form label {
+        margin-right: 10px;
+        font-weight: bold;
+    }
+
+    .filter-form select, .filter-form input {
+        padding: 5px;
+        font-size: 1rem;
+    }
+
+    .filter-form button {
+        padding: 8px 16px;
+        background-color: #02AFBC;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .filter-form button:hover {
+        background-color: #02AFBC;
+    }
+    </style>
 </head>
 <body>
 
@@ -70,7 +120,7 @@
             <td>${demande.dateDemande}</td>
 
             <td><button onclick="openPopup(${demande.id})">Update Status</button></td>
-            <td><a href="historiqueDemande?demandeCreditId=${demande.id}">View Historique</a></td>
+            <td><a href="historiqueDemande?demandeCreditId=${demande.id}">Historique</a></td>
         </tr>
     </c:forEach>
     </tbody>

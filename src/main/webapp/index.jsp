@@ -186,6 +186,7 @@
 
 <script src="js/script.js"></script>
 <script src="js/calcule.js"></script>
+<script src="js/validation.js"></script>
 
 </body>
 
