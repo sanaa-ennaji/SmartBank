@@ -1,20 +1,32 @@
 package com.example.smartbank;
 
-import java.io.*;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
+import java.io.IOException;
 
-@WebServlet(name = "helloServlet", value = "/hello-servlet")
+@WebServlet(urlPatterns = {"/", "/admin", "/profile"})
 public class HelloServlet extends HttpServlet {
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, ServletException {
 
-        request.getRequestDispatcher("/index.jsp").forward(request, response);
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String path = request.getServletPath();
+
+        switch (path) {
+            case "/demande":
+                request.getRequestDispatcher("/Admin.jsp").forward(request, response);
+                break;
+            case "/profile":
+                request.getRequestDispatcher("/profile.jsp").forward(request, response);
+                break;
+            default:
+                request.getRequestDispatcher("/index.jsp").forward(request, response);
+                break;
+        }
     }
 
-   public void destroy(){
+    @Override
+    public void destroy() {
 
-   }
-
+    }
 }

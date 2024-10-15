@@ -33,5 +33,10 @@ public class DemandeCreditServiceImpl implements DemandeCreditService {
         demandeCreditDAOImpl.update(demande);
     }
 
+    @Override
+    public void  updateStatus (long demande_credit_id, long status_id){
+
+        demandeCreditDAOImpl.updateStatus(demande_credit_id , status_id);
+    }
 
 }

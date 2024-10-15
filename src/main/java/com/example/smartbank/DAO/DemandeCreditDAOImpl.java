@@ -3,12 +3,14 @@ package com.example.smartbank.DAO;
 import com.example.smartbank.Entity.DemandeCredit;
 import com.example.smartbank.Entity.HistoriqueModification;
 import com.example.smartbank.Entity.Status;
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.EntityManagerFactory;
 import com.example.smartbank.jpa.EntityManagerHelper;
 import java.time.LocalDate;
 import java.util.List;
+
 
 public class DemandeCreditDAOImpl implements DemandeCreditDAO {
 
@@ -60,11 +62,14 @@ public class DemandeCreditDAOImpl implements DemandeCreditDAO {
     public List<DemandeCredit> getAll() {
         EntityManager em = getEntityManager();
         try {
-            return em.createQuery("SELECT d FROM DemandeCredit d", DemandeCredit.class).getResultList();
+            List<DemandeCredit> demandes = em.createQuery("SELECT d FROM DemandeCredit d", DemandeCredit.class).getResultList();
+            System.out.println("Number of demandes fetched: " + demandes.size());
+            return demandes;
         } finally {
             em.close();
         }
     }
+
 
     @Override
     public DemandeCredit findById(long id) {
@@ -115,44 +120,64 @@ public class DemandeCreditDAOImpl implements DemandeCreditDAO {
         }
 
     }
-        public void updateStatus(long demande_credit_id, long status_id) {
-            EntityManager em = getEntityManager();
-            EntityTransaction transaction = em.getTransaction();
-            try {
-                transaction.begin();
+
+    @Override
+    public void updateStatus(long demande_credit_id, long status_id) {
+        EntityManager em = getEntityManager();
+        EntityTransaction transaction = em.getTransaction();
+        try {
+            transaction.begin();
 
 
-                DemandeCredit demandeCredit = em.find(DemandeCredit.class, demande_credit_id);
-                if (demandeCredit == null) {
-                    throw new IllegalArgumentException(STR."DemandeCredit with ID \{demande_credit_id} not found.");
-                }
-
-
-                Status newStatus = em.find(Status.class, status_id);
-                if (newStatus == null) {
-                    throw new IllegalArgumentException(STR."Status with ID \{status_id} not found.");
-                }
-
-
-                HistoriqueModification historique = new HistoriqueModification();
-                historique.setDemandeCredit(demandeCredit);
-                historique.setStatus(newStatus);
-                historique.setDateModification(LocalDate.now());
-                historique.setRaison("Status Updated");
-
-
-                em.persist(historique);
-
-                transaction.commit();
-            } catch (Exception e) {
-                if (transaction.isActive()) {
-                    transaction.rollback();
-                }
-                e.printStackTrace();
-            } finally {
-                em.close();
+            DemandeCredit demandeCredit = em.find(DemandeCredit.class, demande_credit_id);
+            if (demandeCredit == null) {
+                throw new IllegalArgumentException("DemandeCredit with ID " + demande_credit_id + " not found.");
             }
+
+
+            Status newStatus = em.find(Status.class, status_id);
+            if (newStatus == null) {
+                throw new IllegalArgumentException("Status with ID " + status_id + " not found.");
+            }
+
+
+            HistoriqueModification historique = new HistoriqueModification();
+            historique.setDemandeCredit(demandeCredit);
+            historique.setStatus(newStatus);
+            historique.setDateModification(LocalDate.now());
+            historique.setRaison("Status Updated");
+
+
+            em.persist(historique);
+
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction.isActive()) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            em.close();
         }
+    }
+
+    @Override
+    public List<DemandeCredit> getFilteredDemands(long statusId, LocalDate dateDebut) {
+        EntityManager em = getEntityManager();
+        try {
+            return em.createQuery(
+                            "SELECT d FROM DemandeCredit d WHERE d.status.id = :statusId AND d.dateDebut >= :dateDebut",
+                            DemandeCredit.class)
+                    .setParameter("statusId", statusId)
+                    .setParameter("dateDebut", dateDebut)
+                    .getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
+
+
 
 
 }

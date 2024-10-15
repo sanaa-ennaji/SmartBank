@@ -9,4 +9,5 @@ public interface DemandeCreditService {
      List<DemandeCredit> getAll ();
      DemandeCredit findById (long id);
      void update (DemandeCredit demande);
+    void updateStatus (long demande_credit_id, long status_id);
 }

@@ -92,7 +92,7 @@ function validateForm() {
         showModal(errors);
         return false;
     } else {
-        window.location.href = 'index2.html';
+        window.location.href = '/';
         return false;
     }
 }

@@ -23,9 +23,17 @@ public class DemandeCreditServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         List<DemandeCredit> demandes = demandeCreditService.getAll();
+
+        System.out.println("Number of demandes: " + demandes.size());
+
+        for (DemandeCredit demande : demandes) {
+            System.out.println(demande);
+        }
         request.setAttribute("demandes", demandes);
-        request.getRequestDispatcher("/index.jsp").forward(request, response);
+        request.getRequestDispatcher("Admin.jsp").forward(request, response);
     }
+
+
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -88,7 +96,7 @@ public class DemandeCreditServlet extends HttpServlet {
 
 
             demandeCreditService.create(demande);
-            response.sendRedirect("demande");
+            response.sendRedirect("Admin.jsp");
         } catch (Exception e) {
             e.printStackTrace();
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid input");
