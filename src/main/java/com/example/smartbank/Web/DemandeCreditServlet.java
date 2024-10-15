@@ -22,13 +22,21 @@ public class DemandeCreditServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<DemandeCredit> demandes = demandeCreditService.getAll();
 
-        System.out.println("Number of demandes: " + demandes.size());
 
-        for (DemandeCredit demande : demandes) {
-            System.out.println(demande);
+        String statusIdParam = request.getParameter("statusId");
+        String dateDebutParam = request.getParameter("dateDebut");
+
+        List<DemandeCredit> demandes;
+
+        if (statusIdParam != null && dateDebutParam != null) {
+            long statusId = Long.parseLong(statusIdParam);
+            LocalDate dateDebut = LocalDate.parse(dateDebutParam);
+            demandes = demandeCreditService.getFilteredDemands(statusId, dateDebut);
+        } else {
+            demandes = demandeCreditService.getAll();
         }
+
         request.setAttribute("demandes", demandes);
         request.getRequestDispatcher("Admin.jsp").forward(request, response);
     }

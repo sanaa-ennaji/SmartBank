@@ -17,6 +17,21 @@
 
 <h2>Demande Credit List</h2>
 
+<!-- Filter Form -->
+<form method="get" action="demande">
+    <label for="statusId">Filter by Status:</label>
+    <select name="statusId" id="statusId">
+        <option value="1">encours</option>
+        <option value="2">refusee</option>
+        <option value="3">accepter</option>
+    </select>
+
+    <label for="dateDebut">Filter by Date Debut:</label>
+    <input type="date" name="dateDebut" id="dateDebut">
+
+    <button type="submit">Filter</button>
+</form>
+
 <table>
     <thead>
     <tr>
