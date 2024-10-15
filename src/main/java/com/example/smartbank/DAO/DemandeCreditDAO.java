@@ -13,7 +13,7 @@ public interface DemandeCreditDAO {
     void update(DemandeCredit demande);
     void delete (long id);
     void updateStatus(long demande_credit_id, long status_id);
-   List<DemandeCredit> getFilteredDemands(long statusId, LocalDate dateDebut);
+   List<DemandeCredit> getFilteredDemands(Long statusId, LocalDate dateDebut);
 
 
 }

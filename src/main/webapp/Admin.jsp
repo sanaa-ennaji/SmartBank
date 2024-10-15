@@ -17,20 +17,24 @@
 
 <h2>Demande Credit List</h2>
 
-<!-- Filter Form -->
-<form method="get" action="demande">
-    <label for="statusId">Filter by Status:</label>
-    <select name="statusId" id="statusId">
-        <option value="1">encours</option>
-        <option value="2">refusee</option>
-        <option value="3">accepter</option>
-    </select>
-
-    <label for="dateDebut">Filter by Date Debut:</label>
-    <input type="date" name="dateDebut" id="dateDebut">
-
-    <button type="submit">Filter</button>
-</form>
+<div class="form-container">
+    <!-- Filter Form -->
+    <form class="filter-form" method="get" action="demande">
+        <div>
+        <label for="statusId">Filter by Status:</label>
+        <select name="statusId" id="statusId">
+            <option value="1">encours</option>
+            <option value="2">refusee</option>
+            <option value="3">accepter</option>
+        </select>
+        </div>
+        <div>
+        <label for="dateDebut">Filter by Date Debut:</label>
+        <input type="date" name="dateDebut" id="dateDebut">
+</div>
+        <button type="submit">Filter</button>
+    </form>
+</div>
 
 <table>
     <thead>

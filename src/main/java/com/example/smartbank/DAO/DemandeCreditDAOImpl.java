@@ -162,19 +162,45 @@ public class DemandeCreditDAOImpl implements DemandeCreditDAO {
     }
 
     @Override
-    public List<DemandeCredit> getFilteredDemands(long statusId, LocalDate dateDebut) {
+    public List<DemandeCredit> getFilteredDemands(Long statusId, LocalDate dateDebut)
+   {
         EntityManager em = getEntityManager();
         try {
-            return em.createQuery(
-                            "SELECT d FROM DemandeCredit d WHERE d.status.id = :statusId AND d.dateDebut >= :dateDebut",
-                            DemandeCredit.class)
-                    .setParameter("statusId", statusId)
-                    .setParameter("dateDebut", dateDebut)
-                    .getResultList();
+            StringBuilder query = new StringBuilder("SELECT d FROM DemandeCredit d ");
+
+            boolean hasStatus = statusId != null;
+            boolean hasDateDebut = dateDebut != null;
+
+            if (hasStatus || hasDateDebut) {
+                query.append("WHERE ");
+                if (hasStatus) {
+                    query.append("EXISTS (SELECT h FROM HistoriqueModification h WHERE h.demandeCredit.id = d.id AND h.status.id = :statusId) ");
+                }
+                if (hasStatus && hasDateDebut) {
+                    query.append("AND ");
+                }
+                if (hasDateDebut) {
+                    query.append("d.dateDebut >= :dateDebut ");
+                }
+            }
+
+
+            var queryObj = em.createQuery(query.toString(), DemandeCredit.class);
+            if (hasStatus) {
+                queryObj.setParameter("statusId", statusId);
+            }
+            if (hasDateDebut) {
+                queryObj.setParameter("dateDebut", dateDebut);
+            }
+
+            return queryObj.getResultList();
         } finally {
             em.close();
         }
     }
+
+
+
 
 
 
