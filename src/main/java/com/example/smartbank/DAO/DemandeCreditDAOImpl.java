@@ -3,7 +3,6 @@ package com.example.smartbank.DAO;
 import com.example.smartbank.Entity.DemandeCredit;
 import com.example.smartbank.Entity.HistoriqueModification;
 import com.example.smartbank.Entity.Status;
-import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.EntityManagerFactory;
@@ -197,6 +196,16 @@ public class DemandeCreditDAOImpl implements DemandeCreditDAO {
         } finally {
             em.close();
         }
+    }
+
+    @Override
+    public List<HistoriqueModification> getHistoriqueByDemandeCredit(Long demandeCreditId) {
+        EntityManager em = getEntityManager();
+        return em.createQuery(
+                        "SELECT h FROM HistoriqueModification h WHERE h.demandeCredit.id = :demandeCreditId",
+                        HistoriqueModification.class)
+                .setParameter("demandeCreditId", demandeCreditId)
+                .getResultList();
     }
 
 

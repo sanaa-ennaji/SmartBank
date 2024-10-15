@@ -51,6 +51,7 @@
         <th>Total</th>
         <th>Date Demande</th>
         <th>Update</th>
+        <th>View Historique</th>
     </tr>
     </thead>
     <tbody>
@@ -69,6 +70,7 @@
             <td>${demande.dateDemande}</td>
 
             <td><button onclick="openPopup(${demande.id})">Update Status</button></td>
+            <td><a href="historiqueDemande?demandeCreditId=${demande.id}">View Historique</a></td>
         </tr>
     </c:forEach>
     </tbody>

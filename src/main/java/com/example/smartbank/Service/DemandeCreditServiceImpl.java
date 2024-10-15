@@ -2,6 +2,7 @@ package com.example.smartbank.Service;
 
 import com.example.smartbank.DAO.DemandeCreditDAO;
 import com.example.smartbank.Entity.DemandeCredit;
+import com.example.smartbank.Entity.HistoriqueModification;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
@@ -15,9 +16,8 @@ public class DemandeCreditServiceImpl implements DemandeCreditService {
     private DemandeCreditDAO demandeCreditDAOImpl;
 
     @Override
-    public DemandeCredit create(DemandeCredit demande) {
+    public void create(DemandeCredit demande) {
         demandeCreditDAOImpl.create(demande);
-        return demande;
     }
 
     @Override
@@ -43,5 +43,9 @@ public class DemandeCreditServiceImpl implements DemandeCreditService {
     @Override
     public List<DemandeCredit> getFilteredDemands(long statusId, LocalDate dateDebut) {
         return demandeCreditDAOImpl.getFilteredDemands(statusId, dateDebut);
+    }
+     @Override
+    public List<HistoriqueModification> getHistorique(Long demandeCreditId) {
+        return demandeCreditDAOImpl.getHistoriqueByDemandeCredit(demandeCreditId);
     }
 }

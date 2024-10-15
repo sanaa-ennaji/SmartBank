@@ -12,6 +12,7 @@ import java.io.IOException;
 
 @WebServlet("/updateStatus")
 public class updateStatus extends HttpServlet {
+
     private static final long serialVersionUID = 1L;
 
 

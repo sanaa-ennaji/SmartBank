@@ -1,6 +1,7 @@
 package com.example.smartbank.DAO;
 
 import com.example.smartbank.Entity.DemandeCredit;
+import com.example.smartbank.Entity.HistoriqueModification;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -13,7 +14,8 @@ public interface DemandeCreditDAO {
     void update(DemandeCredit demande);
     void delete (long id);
     void updateStatus(long demande_credit_id, long status_id);
-   List<DemandeCredit> getFilteredDemands(Long statusId, LocalDate dateDebut);
+    List<DemandeCredit> getFilteredDemands(Long statusId, LocalDate dateDebut);
+    List<HistoriqueModification> getHistoriqueByDemandeCredit(Long demandeCreditId);
 
 
 }
