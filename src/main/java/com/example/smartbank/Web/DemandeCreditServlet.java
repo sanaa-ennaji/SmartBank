@@ -107,7 +107,7 @@ public class DemandeCreditServlet extends HttpServlet {
             response.sendRedirect("Admin.jsp");
         } catch (Exception e) {
             e.printStackTrace();
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid input");
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "invalid input");
         }
     }
 
